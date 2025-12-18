@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Monde du Crochet</title>
+  <style>
+    :root {
+      --primary: #c97c5d;
+      --secondary: #f2e8dc;
+      --dark: #3a2f2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: var(--secondary);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    header {
+      height: 100vh;
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1604881991668-37f1cbe3f2c5') center/cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      animation: fadeInDown 1.2s ease forwards;
+    }
+
+    header p {
+      margin: 20px 0;
+      font-size: 1.2rem;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .btn {
+      padding: 12px 25px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: #b36a4d;
+    }
+
+    section {
+      padding: 80px 10%;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Le Monde du Crochet</h1>
+      <p>Apprenez, créez et partagez votre passion du crochet</p>
+      <button class="btn">Découvrir</button>
+    </div>
+  </header>
+
+  <section class="reveal">
+    <h2>Pourquoi le crochet ?</h2>
+    <p>Le crochet est une activité créative, relaxante et accessible à tous.</p>
+  </section>
+
+  <section class="features reveal">
+    <div class="card">🧶 Tutoriels pas à pas</div>
+    <div class="card">🎨 Modèles modernes et classiques</div>
+    <div class="card">🤍 Une communauté passionnée</div>
+  </section>
+
+  <section class="reveal">
+    <h2>Rejoignez-nous</h2>
+    <p>Recevez des conseils, des patrons gratuits et des idées créatives chaque semaine.</p>
+    <button class="btn">S'inscrire</button>
+  </section>
+
+  <footer>
+    <p>© 2025 Le Monde du Crochet - Fait avec amour 🧵</p>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal, section');
+
+    function revealOnScroll() {
+      const windowHeight = window.innerHeight;
+      reveals.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+
+</body>
+</html>
